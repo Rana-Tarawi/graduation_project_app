@@ -332,57 +332,57 @@ class MainCubit extends Cubit<MainStates> {
     //اكتبي هنا يا ندود
     // ده كود الماب بتاعة التاريخ الللي هيتمسح واللي هيتحط اللي هتديها لفانكشن
     // update(deletes) / set(sets, SetOptions(merge: true))
-    //1-Delete Expired fields
+
     for (var i = 0; i < expiredFields.length; i++) {
-      final Map<String, dynamic> deletes = {
+
+      for (var j = 0; j < trainsDocs.length; j++) {
+        //1-Delete Expired fields
+        final Map<String, dynamic> deletes = {
         expiredFields[i]: FieldValue.delete(),
       };
-      for (var j = 0; j < trainsDocs.length; j++) {
         await FirebaseFirestore.instance
             .collection('trains')
             .doc(trainsDocs[j])
             .collection('seats')
             .doc(seatsDocs[j])
             .update(deletes)
-            .whenComplete(() {
-          // print('Field deleted');
+            .whenComplete(() async{
+              //2-Add the new fields
+              var fullDate = DateTime.now().add(Duration(days: 7 - i));
+              var date = fullDate.toString().split(" ").first;
+              await FirebaseFirestore.instance
+                .collection('trains')
+                .doc(trainsDocs[j])
+                .collection('seats')
+                .doc(seatsDocs[j])
+                .set({date: seatsUpdate}, SetOptions(merge: true)).then((value) async{
+                    //3-Reset days of expired fields
+                    await FirebaseFirestore.instance
+                      .collection('trains')
+                      .doc(trainsDocs[j])
+                      .update({'available.${daysOfExpiredDates[i]}': '48'}).then((value) {
+                  }).catchError((error) {
+                    emit(UpdateErrorState(error.toString()));
+                  });
+            }).catchError((error) {
+              emit(UpdateErrorState(error.toString()));
+            });
         });
       }
     }
-    //2-Add the new fields
-    for (var i = 0; i < expiredFields.length; i++) {
-      var fullDate = DateTime.now().add(Duration(days: 7 - i));
-      var date = fullDate.toString().split(" ").first;
-      for (var j = 0; j < trainsDocs.length; j++) {
-        await FirebaseFirestore.instance
-            .collection('trains')
-            .doc(trainsDocs[j])
-            .collection('seats')
-            .doc(seatsDocs[j])
-            .set({date: seatsUpdate}, SetOptions(merge: true)).then((value) {
-          // print('Field added');
-          // print(date);
-        }).catchError((error) {
-          emit(UpdateErrorState(error.toString()));
-        });
-      }
-    }
-    //3-Reset days of expired fields
-    for (var i = 0; i < daysOfExpiredDates.length; i++) {
-      // print(daysOfExpiredDates);
-      for (var j = 0; j < trainsDocs.length; j++) {
-        await FirebaseFirestore.instance
-            .collection('trains')
-            .doc(trainsDocs[j])
-            .update({'available.${daysOfExpiredDates[i]}': '48'}).then((value) {
-          // print(daysOfExpiredDates);
-          // print('Field added');
-          // print(date);
-        }).catchError((error) {
-          emit(UpdateErrorState(error.toString()));
-        });
-      }
-    }
+
+    // for (var i = 0; i < expiredFields.length; i++) {
+    //   for (var j = 0; j < trainsDocs.length; j++) {
+        
+    //   }
+    // }
+
+    // for (var i = 0; i < daysOfExpiredDates.length; i++) {
+    //   // print(daysOfExpiredDates);
+    //   for (var j = 0; j < trainsDocs.length; j++) {
+
+    //   }
+    // }
   }
     // String dateTobBeDeleted =
     //     newDateTime(DateTime.now().toString(), "23:59:59");
