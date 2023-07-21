@@ -16,14 +16,6 @@ class userData{
   String ?phone;
   String ?image;
   late String token;
-  //userData({
-  //  this.name,
-  // this.email,
-  // this.phone,
-  // this.image,
-  // this.token,
-  // this.id,
-  //});
   //named constractor
   userData.fromJason(Map<String , dynamic>json){
     id=json['id'];

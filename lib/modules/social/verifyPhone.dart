@@ -26,20 +26,8 @@ class verifyPhoneScreen extends StatelessWidget {
       create: (contextt) => registerCubit(),
       child: BlocConsumer<registerCubit, registerStates>(
         listener: (BuildContext context, registerStates state) {
-      // if (state is createUserErrorState) {
-      //   showToast(text: state.error.toString(), status: toastStates.ERROR);
-      // }
-      // if (state is createUserSucessState) {
-      //   showToast(
-      //       text: 'you have sucessfully signed up', status: toastStates.SUCESS);
-      //   casheHelper.saveData(key: 'uId', value: state.uId).then((value) {
-      //     Navigator.push(context,
-      //         MaterialPageRoute(builder: ((context) => const Trans())));
-      //   });
-      // }
     }, builder: (BuildContext context, registerStates state) {
       registerCubit cubit = registerCubit.get(context);
-      print('verfiviiittionnnnn');
       return Scaffold(
         appBar: AppBar(
           backgroundColor: colortheme.lightGray,
@@ -132,20 +120,7 @@ class verifyPhoneScreen extends StatelessWidget {
                             "Wrong OPT code",
                             status: toastStates.ERROR,
                           );
-
                         }
-          
-                        // cubit.submitOTP();
-                        // // PhoneAuthCredential credential= PhoneAuthProvider.credential(verificationId: widget.verificationId!, smsCode:otpController.toString() );
-                        // // await FirebaseAuth.instance.signInWithCredential(credential);
-                        // if(FirebaseAuth.instance.currentUser != null){
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           builder: ((context) =>  const welcomeScreen()),
-                        //       )
-                        //   );
-                        // }
                       },
                       text: 'verify and create account',
                       context: context),

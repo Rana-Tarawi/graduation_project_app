@@ -177,11 +177,6 @@ class _welcomeScreenState extends State<welcomeScreen> {
                               const SizedBox(
                                 height: 15,
                               ),
-                              // Container(
-                              //  width: double.infinity,
-                              // height: 1,
-                              // color: Colors.grey,
-                              // ),
                               const SizedBox(
                                 height: 15,
                               ),

@@ -20,8 +20,6 @@ import 'package:graduation_project_app/shared/variables.dart';
 
 import 'package:restart_app/restart_app.dart';
 
-import '../../layout/transition.dart';
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -267,7 +265,6 @@ class ProfileScreen extends StatelessWidget {
                               uId = '';
                               MainCubit.uId = '';
                               MainCubit.model = UserModel();
-                              print('out  ${MainCubit.uId}');
                               casheHelper.removeData(key: 'uId');
                               Restart.restartApp();
                             });

@@ -21,7 +21,6 @@ class _TransState extends State<Trans> {
     return WillPopScope(
         onWillPop: () async {
           if (MainCubit.get(context).currentindex == 0) {
-            print("After clicking the Android Back Button");
             DateTime now = DateTime.now();
             if (currentBackPressTime == null ||
                 now.difference(currentBackPressTime) > Duration(seconds: 2)) {
@@ -44,20 +43,6 @@ class _TransState extends State<Trans> {
           listener: (BuildContext context, MainStates MainStates) {},
           builder: (BuildContext context, MainStates MainStates) {
             MainCubit cubit = MainCubit.get(context);
-            // cubit.resetSeats;
-
-            // cubit.initPlatformState();
-            // cubit.checkExpiredDate();
-            // cubit.update();
-            // cubit.previousDates();
-            // cubit.addFutureFields();
-            // cubit.addOnePreviousField();
-            // cubit.deleteAllFields();
-            // cubit.test();
-            // cubit.getFields();
-            // cubit.resetSeats();
-            // print(cubit.currentindex);
-            // print("///////////////////");
             return Scaffold(
               body: cubit.screens[cubit.currentindex],
               bottomNavigationBar: SingleChildScrollView(

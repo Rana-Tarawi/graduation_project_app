@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_project_app/layout/transition.dart';
 import 'package:graduation_project_app/models/ticket.dart';
 import 'package:graduation_project_app/modules/Ticket/allTickets.dart';
 import 'package:graduation_project_app/modules/Ticket/cubit/cubit.dart';
@@ -30,7 +29,6 @@ class _TicketState extends State<Ticket> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        print("After clicking the Android Back Button");
         Navigator.push(
             context,
             MaterialPageRoute(

@@ -39,11 +39,6 @@ class _phoneScreenState extends State<phoneScreen> {
        MainCubit.model = UserModel();
         casheHelper.removeData(key: 'uId');
        Restart.restartApp();
-       //  Navigator.push(
-       //      context,
-       //      MaterialPageRoute(
-       //        builder: ((context) => const welcomeScreen()),
-       //      ));
       });
       return false;
 
@@ -112,12 +107,7 @@ class _phoneScreenState extends State<phoneScreen> {
                                             if (!await registerCubit
                                                 .searchNumber(
                                                 number: phoneController.text)) {
-                                              // registerCubit.get(context).userRegister(
-                                              //   firstName: firstName.text,
-                                              //   secondName: lastName.text,
-                                              //   phone: phoneControllor.text,
-                                              //   email: emailSignUp.text,
-                                              //   pass: passSignUp.text);
+                                            
                                               registerCubit.get(context).emit(
                                                   registerLoadinglState());
                                               int resend = 0;

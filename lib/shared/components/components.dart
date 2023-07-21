@@ -100,20 +100,11 @@ Widget defualtForm({
       keyboardType: inputType,
       obscureText: hidden,
       onFieldSubmitted: (s) {
-        print('=========');
-        print(s);
-        print('=========');
-        print(controller.text);
         if (lable == 'enter your name') {
           nameController.text = s;
         } else if (lable == 'enter your email') {
           emailController.text = s;
         }
-
-        print('=========');
-        print(nameController.text);
-
-        // onsubmit!(s);
       },
       //function that i can do work on it
 
@@ -122,7 +113,6 @@ Widget defualtForm({
       decoration: InputDecoration(
         labelText: lable,
         labelStyle: const TextStyle(color: colortheme.lightPurple),
-        //labelStyle: TextStyle(color: colortheme.lightPurple),
         border: const OutlineInputBorder(),
         focusColor: colortheme.lightPurple,
         focusedBorder: const OutlineInputBorder(

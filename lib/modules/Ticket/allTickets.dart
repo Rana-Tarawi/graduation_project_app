@@ -15,7 +15,6 @@ class TicketsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
             onWillPop: () async {
-        print("After clicking the Android Back Button");
                   Navigator.push(
               context,
               MaterialPageRoute(

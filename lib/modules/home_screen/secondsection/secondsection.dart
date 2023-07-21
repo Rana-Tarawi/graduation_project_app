@@ -1,20 +1,15 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:graduation_project_app/models/searchedtrain_model.dart';
 import 'package:graduation_project_app/modules/Ticket/timeFuns.dart';
 import 'package:graduation_project_app/modules/home_screen/cubit/cubit.dart';
 import 'package:graduation_project_app/modules/home_screen/cubit/states.dart';
 import 'package:graduation_project_app/modules/home_screen/secondsection/dropdownform.dart';
-import 'package:graduation_project_app/modules/home_screen/secondsection/text_form.dart';
 import 'package:graduation_project_app/modules/search_screen/search_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:graduation_project_app/shared/style/colors.dart';
 import 'package:graduation_project_app/shared/components/button.dart';
 import 'package:graduation_project_app/shared/variables.dart';
 import 'package:intl/intl.dart';
-
-import '../../../models/train_model.dart';
 
 class SecondSection extends StatefulWidget {
   const SecondSection({super.key});
@@ -24,9 +19,6 @@ class SecondSection extends StatefulWidget {
 }
 
 class _SecondSectionState extends State<SecondSection> {
-  //TextEditingController from = TextEditingController();
-  //TextEditingController to = TextEditingController();
-  // TextEditingController depart = TextEditingController();
   var formkey = GlobalKey<FormState>();
   int travellers = 1;
 
@@ -123,7 +115,6 @@ class _SecondSectionState extends State<SecondSection> {
                                             width: width * 0.02,
                                           ),
                                           Text(
-                                              // '$travellers',
                                               '${travellers}',
                                               style: Theme.of(context)
                                                   .textTheme
@@ -165,10 +156,6 @@ class _SecondSectionState extends State<SecondSection> {
                                         cubit
                                             .getTrainsAndSearch(from, to)
                                             .then((value) {
-                                          print(';;;;;;;;;;;;;;;;;;;;;;');
-                                          // print(cubit.searchedTrains);
-                                          // print(cubit.searchedTrains.length);
-
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
@@ -179,8 +166,6 @@ class _SecondSectionState extends State<SecondSection> {
                                           onError.toString();
                                         });
                                       }
-
-                                      // addseats(seats);
                                     })
                               ]),
                         ),
@@ -237,26 +222,7 @@ List<DropdownMenuItem<String>> dates = [
       child: Text(DateFormat.yMMMEd()
           .format(DateTime.now().add(Duration(days: 6)))
           .toString())),
-  // DropdownMenuItem(
-  //     value: DateTime.now().add(Duration(days: 7)).toString(),
-  //     child: Text(DateFormat.yMMMEd()
-  //         .format(DateTime.now().add(Duration(days: 7)))
-  //         .toString())),
 ];
-
-// Map<String, dynamic> train = {
-//   'stations': ['Cairo', 'Giza', 'Asyut', 'Al Balyana', 'Qena', 'Luxor'],
-//   'Timetable': [
-//     '12:15 pm',
-//     '12:40 am',
-//     '07:05 pm',
-//     '09:45 pm',
-//     '11:40 pm',
-//     '12:40 am',
-//   ],
-//   'trainNum': '160',
-//   'trainID': '',
-// };
 List<bool> seatts = List.filled(48, false);
 
 Map<String, dynamic> seats = {
@@ -274,10 +240,6 @@ Map<String, dynamic> seats = {
   newDateTime(DateTime.now().add(Duration(days: 6)).toString(), "23:59:59")
       .toString(): seatts,
 };
-// void addtrains(Map<String, dynamic> train) {
-//   FirebaseFirestore.instance.collection("trains").add(train);
-// }
-
 void addseats(seats) {
   List trainsDocs = [
     '2dRl1WJljsXJpNrn9KYB',
@@ -311,7 +273,6 @@ void addseats(seats) {
     FirebaseFirestore.instance
         .collection("trains")
         .doc(trainsDocs[i])
-        // .set({'available':available}, SetOptions(merge: true));
         .collection('seats')
         .add(seats);
   }

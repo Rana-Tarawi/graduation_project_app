@@ -32,9 +32,7 @@ Widget button({
         ],
       ),
       child: MaterialButton(
-        // ignore: curly_braces_in_flow_control_structures
         onPressed: onpress,
-        // ignore: curly_braces_in_flow_control_structures
         child: icon != null
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,

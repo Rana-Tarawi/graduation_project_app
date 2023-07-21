@@ -22,33 +22,26 @@ class MqttHandler with ChangeNotifier {
         .withWillMessage('My Will message')
         .startClean() // Non persistent session for testing
         .withWillQos(MqttQos.atLeastOnce);
-    print('EXAMPLE::Mosquitto client connecting....');
     client.connectionMessage = connMess;
     try {
       await client.connect();
     } on NoConnectionException catch (e) {
       // Raised by the client when connection fails.
-      print('EXAMPLE::client exception - $e');
       client.disconnect();
     }  catch (e) {
       // Raised by the socket layer
-      print('EXAMPLE::socket exception - $e');
       client.disconnect();
     }
 
     /// Check we are connected
     if (client.connectionStatus!.state == MqttConnectionState.connected) {
-      print('EXAMPLE::Mosquitto client connected');
     } else {
       /// Use status here rather than state if you also want the broker return code.
-      print(
-          'EXAMPLE::ERROR Mosquitto client connection failed - disconnecting, status is ${client.connectionStatus}');
       client.disconnect();
       return -1;
     }
 
     /// Ok, lets try a subscription
-    print('EXAMPLE::Subscribing to the train topic');
     String topic = 'Train $Train'; // Not a wildcard topic
     client.subscribe(topic, MqttQos.atMostOnce);
     client.updates!.listen((List<MqttReceivedMessage<MqttMessage?>>? c) {
@@ -66,19 +59,12 @@ class MqttHandler with ChangeNotifier {
       else {
         maps_cubic!.mapController?.animateCamera(CameraUpdate.newLatLngZoom(LatLng(trian_location_lat,trian_location_long),5));
       }
+}
 
-      print("$trian_location_lat                        $trian_location_long");}
-      print(
-          'EXAMPLE::Change notification:: topic is <${c[0].topic}>, payload is <-- $pt -->');
-      print('');
     });
 
     client.published!.listen((MqttPublishMessage message) {
-      print(
-          'EXAMPLE::Published notification:: topic is ${message.variableHeader!.topicName}, with Qos ${message.header!.qos}');
     });
-
-
     return 0;
   }
 

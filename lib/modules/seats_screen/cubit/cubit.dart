@@ -38,28 +38,13 @@ class SeatsScreenCubit extends Cubit<SeatsScreenStates> {
     numberOfSeats--;
     amountToBePayed -= amountDependingOnClass(seatNumber);
     selectedSeats.remove(seatNumber <= 9 ? '0$seatNumber' : '$seatNumber');
-    // allSeats[seatNumber - 1] = false;
     emit(RemoveSeatsState());
   }
-
-  Future<void> checkBeforeConfirm() async {
-    
-
-  }
-
-  // Future<void> reset() async {
-  //   numberOfSeats = 0;
-  //   amountToBePayed = 0;
-  //   selectedSeats = [];
-  //   emit(CheckState());
-  // }
-
   void removeEvenSeatFunction(int seatNumber, List<bool> evenBoxes, int index) {
     evenBoxes[index] = false;
     numberOfSeats--;
     amountToBePayed -= amountDependingOnClass(seatNumber);
     selectedSeats.remove(seatNumber <= 9 ? '0$seatNumber' : '$seatNumber');
-    // allSeats[seatNumber - 1] = false;
     emit(RemoveSeatsState());
   }
 
@@ -68,7 +53,6 @@ class SeatsScreenCubit extends Cubit<SeatsScreenStates> {
     numberOfSeats++;
     amountToBePayed += amountDependingOnClass(seatNumber);
     selectedSeats.add(seatNumber <= 9 ? '0$seatNumber' : '$seatNumber');
-    // allSeats[seatNumber - 1] = true;
     if (isOdd) {
       oddBoxes[index] = true;
     } else {
@@ -77,33 +61,6 @@ class SeatsScreenCubit extends Cubit<SeatsScreenStates> {
     emit(ChangeSeatsState());
   }
 
-  // await FirebaseFirestore.instance
-  //     .collection('trains')
-  //     .doc("2dRl1WJljsXJpNrn9KYB")
-  //     .collection("seats")
-  //     .doc('Lzmj2kh4n6gIQMQwu4sU')
-  //     .update({
-  //   '2023-03-06 23:59:59': FieldValue.delete(),
-  // }).whenComplete(() async {
-  //   print('Field deleted');
-  //   emit(DeleteFieldState());
-  //   await FirebaseFirestore.instance
-  //       .collection('trains')
-  //       .doc('2dRl1WJljsXJpNrn9KYB')
-  //       .collection("seats")
-  //       .doc('Lzmj2kh4n6gIQMQwu4sU')
-  //       .set({'2023-03-06 23:59:59': seats}, SetOptions(merge: true)).then(
-  //           (value) async {
-  //     //Do your stuff.
-  //     print('the field added successfully');
-  //     emit(AddFieldState());
-  //   }).catchError((error) {
-  //     print(error.toString());
-  //     emit(DeleteFieldErrorState(error));
-  //   });
-  // });
-  //2dRl1WJljsXJpNrn9KYB
-  // List seats = List.filled(48, false);
   Future<void> getSeats(String trainId) async {
     allSeats = [];
     FirebaseFirestore.instance
@@ -113,7 +70,7 @@ class SeatsScreenCubit extends Cubit<SeatsScreenStates> {
         .snapshots()
         .listen((event) {
       event.docs.forEach((e) {
-        //allSeats = e[DateFormat('EEEE').format(DateTime.parse(depart))];
+
         allSeats = e[fieldName];
         seatsId = e.reference.id;
       });
@@ -122,7 +79,6 @@ class SeatsScreenCubit extends Cubit<SeatsScreenStates> {
   }
 
   Future<void> updateSeats(String trainId, String theDayValue) async {
-    //print(DateTime.parse(depart).day);
     await FirebaseFirestore.instance
         .collection('trains')
         .doc(trainId)
@@ -136,7 +92,6 @@ class SeatsScreenCubit extends Cubit<SeatsScreenStates> {
   Future<void> updateAvailable(String trainId, String theDayValue) async {
     String updatedValue =
         (int.parse(theDayValue) - numberOfSeats).toString();
-    // print('the new value is $updatedValue');
     await FirebaseFirestore.instance
         .collection('trains')
         .doc(trainId)

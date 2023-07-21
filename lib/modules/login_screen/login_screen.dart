@@ -2,12 +2,9 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation_project_app/layout/transition.dart';
-import 'package:graduation_project_app/modules/Profile/profile_screen.dart';
-import 'package:graduation_project_app/modules/home_screen/home_screen.dart';
 import 'package:graduation_project_app/modules/register_screen/register_screen.dart';
 import 'package:graduation_project_app/network/local/shared_pref.dart';
 import 'package:graduation_project_app/shared/style/colors.dart';
-import 'package:graduation_project_app/shared/variables.dart';
 import '../../shared/components/components.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
@@ -30,12 +27,7 @@ class loginSreen extends StatelessWidget {
             showToast(
                 text: 'you have sucessfuly loged in',
                 status: toastStates.SUCESS);
-            print('============,,,,,,,,,,,,,,,,,,,,,,,,');
-            print(state.uId);
             casheHelper.saveData(key: 'uId', value: state.uId).then((value) {
-              print("ادممممممممموووممممممممههههههههههه");
-              print('new log in id is' + state.uId);
-              //  uId=casheHelper.getData(key: 'uId');
               Navigator.push(
                   context, MaterialPageRoute(builder: ((context) => Trans())));
             });

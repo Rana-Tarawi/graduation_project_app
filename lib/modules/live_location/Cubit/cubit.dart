@@ -65,7 +65,6 @@ class MapsCubit extends Cubit<MapsStates>{
   }
   void getTrainLocation(){
     mqttHandler.connect(trainNump);
-    print("hhhhhhhhhhhhhhhhhhhhhhhhhhhh        "+mqttHandler.data.toString());
   }
  LatLngBounds getLatLngBounds(List<LatLng> list) {
     double ?x0, x1, y0, y1;

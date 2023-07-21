@@ -21,7 +21,6 @@ class registerCubit extends Cubit<registerStates> {
       );
       createUser(name: name, email: email, phone: phone);
     } catch (error) {
-      print(error.toString());
       emit(registerErrorState(error.toString()));
     }
   }
@@ -49,7 +48,6 @@ class registerCubit extends Cubit<registerStates> {
         .then((value) {
       emit(createUserSucessState(phone));
     }).catchError((error) {
-      print(error.toString());
       emit(createUserErrorState(error.toString()));
     });
   }
@@ -60,10 +58,6 @@ class registerCubit extends Cubit<registerStates> {
   void passtrue() {
     isPass = !isPass;
     emit(isPassIsVisibleState());
-            print('===========');
-
-        print(isPass);
-
   }
 
   void passContrue() {

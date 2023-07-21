@@ -25,21 +25,6 @@ class registerScreen extends StatelessWidget {
       create: (context) => registerCubit(),
       child: BlocConsumer<registerCubit, registerStates>(
         listener: (context, state) {
-          // if (state is createUserErrorState) {
-          //   showToast(text: state.error.toString(), status: toastStates.ERROR);
-          // }
-          // if (state is createUserSucessState) {
-          //   showToast(
-          //       text: 'an code will sent to your phone',
-          //       status: toastStates.SUCESS);
-          //   casheHelper.saveData(key: 'uId', value: state.uId).then((value) {
-          //     Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //             builder: ((context) =>
-          //                 verificationRegisterScreen(phoneControllor.text))));
-          //   });
-          // }
         },
         builder: (context, state) {
           return Scaffold(
@@ -181,12 +166,6 @@ class registerScreen extends StatelessWidget {
                                     if (formKey.currentState!.validate()) {
                                       if (!await registerCubit.searchNumber(
                                           number: phoneControllor.text)) {
-                                        // registerCubit.get(context).userRegister(
-                                        //   firstName: firstName.text,
-                                        //   secondName: lastName.text,
-                                        //   phone: phoneControllor.text,
-                                        //   email: emailSignUp.text,
-                                        //   pass: passSignUp.text);
                                         registerCubit
                                             .get(context)
                                             .emit(registerLoadinglState());

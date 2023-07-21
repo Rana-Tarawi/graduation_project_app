@@ -1,10 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:graduation_project_app/modules/home_screen/firstsection/firstsection.dart';
 import 'package:graduation_project_app/modules/home_screen/secondsection/secondsection.dart';
-import 'package:graduation_project_app/shared/style/colors.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

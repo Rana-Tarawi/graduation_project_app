@@ -30,7 +30,6 @@ PreferredSizeWidget bar({
   return AppBar(
     leading: IconButton(
       onPressed: ()async {
-        print(text);
         appNow=text;
         if (text == 'My Tickets' ||
             text == 'Live location' ||
@@ -59,11 +58,6 @@ PreferredSizeWidget bar({
             casheHelper.removeData(key: 'uId');
             Restart.restartApp();
           });
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //       builder: ((context) => const welcomeScreen()),
-          //     ));
         }
         else {
           Navigator.pop(context);

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graduation_project_app/shared/style/colors.dart';
-
 class PlusorMinus extends StatefulWidget {
   final IconData icon;
   int travellers;

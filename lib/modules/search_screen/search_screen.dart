@@ -14,15 +14,6 @@ class TrainsScreen extends StatelessWidget {
   const TrainsScreen({
     super.key,
   });
-
-  // final List data = [
-  //   '10:00 am',
-  //   '01:00 pm',
-  //   '03:00 pm',
-  //   '05:00 pm',
-  //   '10:00 pm'
-  // ];
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -103,11 +94,6 @@ class TrainsScreen extends StatelessWidget {
                                           const NeverScrollableScrollPhysics(),
                                       shrinkWrap: true,
                                       itemBuilder: ((context, index) {
-                                        // print(",,,,,,,,,,,,,,,,,,,");
-                                        // print("cur index");
-                                        // print(index);
-                                        // print(cubit.searchedTrains.length);
-                                        // print(cubit.searchedTrains);
                                         return SearchCard(
                                           context: context,
                                           time: cubit.searchedTrains[index]

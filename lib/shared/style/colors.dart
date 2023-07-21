@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class colortheme {
-  // static const Color mainBlue = Colors.orange;
   static const Color lightPurple = Color(0xFF7E57C2);
   static const Color blueGray = Color.fromRGBO(236, 239, 241, 1);
   static const Color saimon = Color.fromARGB(255, 252, 120, 105);

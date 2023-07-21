@@ -14,8 +14,6 @@ import 'package:graduation_project_app/shared/components/toast.dart';
 import 'package:graduation_project_app/shared/style/colors.dart';
 import 'package:graduation_project_app/shared/variables.dart';
 
-//colortheme
-
 class Seats extends StatefulWidget {
   final Map<String, dynamic> train;
   final String time;
@@ -74,7 +72,6 @@ class _SeatsState extends State<Seats> {
                 ),
                 leading: IconButton(
                   onPressed: () {
-                    // SeatsScreenCubit.get(context).close();
                     Navigator.pop(context);
                   },
                   icon: const Icon(
@@ -114,8 +111,7 @@ class _SeatsState extends State<Seats> {
                                       children: [
                                         Expanded(
                                           child: Column(
-                                            // mainAxisAlignment:
-                                            //     MainAxisAlignment.center,
+                                            
                                             children: [
                                               Container(
                                                 height: height * 0.3,
@@ -245,17 +241,6 @@ class _SeatsState extends State<Seats> {
                         if (selectedSeats.isNotEmpty) {
                           confirmSeats(context, widget.time, widget.trainNUM,
                               widget.train);
-                          // showDialog(
-                          //   context: context,
-                          //   builder: (cont) =>
-                            //  AlertWidget(
-                            //     train: widget.train,
-                            //     time: widget.time,
-                            //     trainNUM: widget.trainNUM),
-                          // );
-                          // BlocProvider.value(value: BlocProvider.of<SeatsScreenCubit>(context),child: AlertWidget(train:widget.train,time:widget.time,trainNUM:widget.trainNUM)));
-                          // confirmSeats(context, widget.time, widget.trainNUM,
-                          //     widget.train, seatsScreenCubit);
                         } else {
                           showToast(
                             state: ToastStates.error,

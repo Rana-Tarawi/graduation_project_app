@@ -57,31 +57,15 @@ class MyApp extends StatelessWidget {
       return MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) {
-              // if (expired(DateTime.parse(
-              //     newDateTime(DateTime.now().toString(), "23:59:00")))) {
-              //   return MainCubit()
-              //     ..userGetData()
-              //     ..resetSeats();
-              // } else {
               return MainCubit()
                 ..userGetData()
                 ..resetSeats()
-                // ..add()
-                // ..delete()
-                // ..available()
-                // ..addFutureFields()
-                // ..deleteAllFields()
-                // ..addOnePreviousField()
-                
-                
                 ;
-              // }
             }),
             BlocProvider(
               create: (context) => HomeScreenCubit(),
             ),
-                        
-            
+
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

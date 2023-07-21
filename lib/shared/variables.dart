@@ -1,6 +1,3 @@
-//TextEditingController from = TextEditingController();
-//TextEditingController to = TextEditingController();
-//TextEditingController depart = TextEditingController();
 import 'package:flutter/material.dart';
 import 'package:graduation_project_app/modules/Ticket/timeFuns.dart';
 import 'package:graduation_project_app/modules/live_location/Cubit/cubit.dart';
@@ -27,7 +24,6 @@ String station = "";
 String Train = "";
 
 ///changed later
-
 //seatsScreen constants
 int numberOfSeats = 0; //in seats screen
 double amountToBePayed = 0;

@@ -6,7 +6,6 @@ import 'package:graduation_project_app/modules/Ticket/ticket_screen.dart';
 import 'package:graduation_project_app/modules/Ticket/timeFuns.dart';
 import 'package:graduation_project_app/modules/seats_screen/cubit/cubit.dart';
 import 'package:graduation_project_app/modules/seats_screen/cubit/states.dart';
-import 'package:graduation_project_app/shared/components/toast.dart';
 import 'package:graduation_project_app/shared/variables.dart';
 import 'package:graduation_project_app/shared/style/colors.dart';
 import '../../../models/ticket.dart';
@@ -55,9 +54,6 @@ Future confirmSeats(BuildContext context, String time, String trainNUM,
                                         )),
                               );
                             });
-
-                            // print(allSeats);
-                            ///need uid here yaaaa mahaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                           },
                           child: const Text(
                             'Confirm',

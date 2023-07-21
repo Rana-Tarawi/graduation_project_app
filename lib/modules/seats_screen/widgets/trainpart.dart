@@ -5,7 +5,6 @@ import 'package:graduation_project_app/modules/seats_screen/cubit/states.dart';
 import 'package:graduation_project_app/shared/components/toast.dart';
 import 'package:graduation_project_app/shared/style/colors.dart';
 import 'package:graduation_project_app/shared/variables.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:graduation_project_app/modules/seats_screen/cubit/cubit.dart';
 
 class TrainPart extends StatefulWidget {
@@ -69,11 +68,6 @@ class _TrainPartState extends State<TrainPart> {
                         boxColor == colortheme.lightPurple
                     ? Colors.white
                     : Colors.black),
-            // style: TextStyle(
-            //     color: boxColor == colortheme.saimon ||
-            //             boxColor == colortheme.lightPurple
-            //         ? Colors.white
-            //         : Colors.black),
           ),
         ),
       );

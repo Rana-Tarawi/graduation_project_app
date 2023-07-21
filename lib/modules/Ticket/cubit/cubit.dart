@@ -4,7 +4,6 @@ import 'package:graduation_project_app/layout/cubit/cubit.dart';
 import 'package:graduation_project_app/models/ticket.dart';
 import 'package:graduation_project_app/modules/Ticket/cubit/states.dart';
 import 'package:graduation_project_app/modules/Ticket/timeFuns.dart';
-import 'package:graduation_project_app/modules/seats_screen/cubit/cubit.dart';
 import 'package:graduation_project_app/shared/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation_project_app/layout/transition.dart';
@@ -69,7 +68,6 @@ class TicketCubit extends Cubit<TicketsStates> {
               .doc(element.id)
               .delete()
               .then((value) {
-            print("Success!");
             showToast(
                 status: toastStates.SUCESS,
                 text: "All expired tickets are deleted");
@@ -138,23 +136,12 @@ class TicketCubit extends Cubit<TicketsStates> {
             .doc(element.id)
             .delete()
             .then((value) {
-          ///nadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-          // ticket.seats.split(',').toList()
-          //print(allSeats);
-          //element.id
           FirebaseFirestore.instance
               .collection('trains')
               .where("trainNum", isEqualTo: ticket.train)
               .get()
               .then((value) {
             value.docs.forEach((element) {
-              //print(element);
-              // print(element['available'][
-              //     '${DateFormat('EEEE').format(DateTime.parse(ticket.date.toString())).substring(0, 3)}']);
-              // print(newDateTime(ticket.date.toString(), "23:59:59")
-              //         .toString()
-              //         .split(" ")
-              //         .first);
               updateData(
                   element.id,
                   element['available'][
@@ -172,7 +159,6 @@ class TicketCubit extends Cubit<TicketsStates> {
           }).catchError((error) {
             emit(CancelTicketErrorState(error));
           });
-          // updateSeats();
         });
       });
     }).then((value) {
@@ -191,7 +177,6 @@ class TicketCubit extends Cubit<TicketsStates> {
         .snapshots()
         .first
         .then((value) async {
-      // print('reached to the seat doocc=======');
       await FirebaseFirestore.instance
           .collection('trains')
           .doc(trainId)
@@ -204,7 +189,6 @@ class TicketCubit extends Cubit<TicketsStates> {
         for (var ele in seats) {
           allSeats[int.parse(ele) - 1] = false;
         }
-        // print(allSeats);
         await FirebaseFirestore.instance
             .collection('trains')
             .doc(trainId)
@@ -212,7 +196,6 @@ class TicketCubit extends Cubit<TicketsStates> {
             .doc(seatsId)
             .update({field: allSeats});
       }).catchError((error) {
-        print(error.toString());
       });
     });
   }
@@ -221,7 +204,6 @@ class TicketCubit extends Cubit<TicketsStates> {
       int noOfCanceldSeats, String dayCanceld) async {
     String updatedValue =
         (int.parse(theDayValue) + noOfCanceldSeats).toString();
-    // print('available========= $updatedValue');
     await FirebaseFirestore.instance
         .collection('trains')
         .doc(trainId)
@@ -230,8 +212,6 @@ class TicketCubit extends Cubit<TicketsStates> {
 
   Future<void> updateBill(double price) async {
     String? start = uId?.substring(0, 3);
-    // print(
-    //     'bill======${double.parse(MainCubit.model!.bill.toString()) - price}');
     await FirebaseFirestore.instance
         .collection("users")
         .doc(start)

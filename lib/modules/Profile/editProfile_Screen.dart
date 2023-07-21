@@ -17,20 +17,12 @@ class editProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    // var nameController = TextEditingController();
-    // var emailController = TextEditingController();
-    // var phoneController = TextEditingController();
-    //var formkey = GlobalKey<FormState>();
     return BlocConsumer<MainCubit, MainStates>(
       listener: (context, state) {
-        // MainCubit.get(context).profileImage;
       },
       builder: (context, state) {
         var userModeldata = MainCubit.model;
         var editedProfileImage = MainCubit.get(context).profileImage;
-
-        // nameController.text = userModeldata!.name!;
-        // emailController.text = userModeldata!.email!;
         phoneController.text = userModeldata!.uId!;
         return Scaffold(
           appBar: AppBar(
@@ -132,14 +124,6 @@ class editProfileScreen extends StatelessWidget {
                     color:colortheme.lightPurple,
                     ))),
                   ),
-                // if (state is updateUserLoadingState)
-                //   SizedBox(
-                //     height: 5,
-                //   ),
-                // if (state is updateUserLoadingState) LinearProgressIndicator(),
-                // SizedBox(
-                //   height: 20,
-                // ),
                  if (MainCubit.get(context).profileImage == null) 
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
@@ -152,9 +136,6 @@ class editProfileScreen extends StatelessWidget {
                         inputType: TextInputType.name,
                         validator: 'name must not be empty',
                         lable: 'enter your name',
-                        // onsubmit: (s) {
-                        //   nameController.text = s;
-                        // }
                       ),
                       const SizedBox(
                         height: 15,
@@ -166,9 +147,6 @@ class editProfileScreen extends StatelessWidget {
                         inputType: TextInputType.emailAddress,
                         validator: 'email must not be empty',
                         lable: 'enter your email',
-                        // onsubmit: (s) {
-                        //   emailController.text = s;
-                        // }
                       ),
                       const SizedBox(
                         height: 15,
@@ -180,9 +158,6 @@ class editProfileScreen extends StatelessWidget {
                         inputType: TextInputType.phone,
                         validator: 'phone must not be empty',
                         lable: 'enter your phone',
-                        // onsubmit: (s) {
-                        //   phoneController.text = s;
-                        // }
                       ),
                       const SizedBox(
                         height: 30,
