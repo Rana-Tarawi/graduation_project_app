@@ -1,16 +1,8 @@
-# graduation_project_app
+The Arrival application’s functionalities are to purchase train tickets and track the train via Google Maps using MQTT Protocol to get data from the GPS module on that train.It was developed with the use of Flutter, Firebase, Google Maps, SMS OTP verification, MQTT and collaboration on GitHub. 
 
-A new Flutter project.
+https://github.com/Rana-Tarawi/graduation_project_app/assets/113873336/3c66881f-67f9-4de2-b0a3-5e24ff73e02d
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
